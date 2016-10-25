@@ -1,12 +1,16 @@
 import React from 'react';
+import StatusUpdate from './statusupdate';
+import CommentThread from './commentthread';
+import Comment from './comment';
+
 export default class FeedItem extends React.Component { render() {
 return (
 <div className="fb-status-update panel panel-default">
         <div className="panel-body">
-          <statusupdate author="Someone" postDate="Yesterday at 3:48pm"
+          <StatusUpdate author="Someone" postDate="Yesterday at 3:48pm"
                         location="Austin, TX">
                          ugh.
-          </statusupdate>
+          </StatusUpdate>
           <hr />
           <div className="row">
             <div className="col-md-12">
@@ -36,12 +40,12 @@ return (
             </div>
           </div>
           <hr />
-          <commentthread>
+          <CommentThread>
             <Comment author="Someone Else" postDate="20 hrs">
               hope everything is ok!</Comment>
             <Comment author="Another Person" postDate="20 hrs">
               sending hugs your way</Comment>
-          </commentthread>
+          </CommentThread>
         </div>
 </div> )
 } }
