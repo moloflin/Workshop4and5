@@ -1,5 +1,45 @@
 import React from 'react';
 export default class StatusUpdateEntry extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
+  /** Called when the user clicks the 'post' button.
+      Triggers the 'onPost' prop if the post isn't empty, and clears
+      the Component
+  **/
+  handlePost(e) {
+    //Prevent the event from "building" up the DOM tree
+    // You generally want to call this in all of your event handlers
+    e.preventDefault();
+    // Trim whitespace from beginning + end of entry.
+    var StatusUpdateText = this.state.value.trim();
+    if(StatusUpdateText !== ""){
+      //send the post to the server + update the Feed
+      this.props.onPost(StatusUpdateText);
+      //Reset status update
+      this.setState({value : ""})
+    }
+  }
+
+  /**
+    Called When the user type a character into the status update box.
+    @param e An Event object.
+  **/
+  handleChange(e){
+    // Prevent the event from "bubbling" up the DOM tree.
+    e.preventDefault();
+
+    //e.target is the React Virtual DOM target of the
+    //input event -- the <textarea> element. The textarea's
+    //'value' is the entrie contents of what the user has
+    // typed in so far.
+    this.setState({value: e.target.value});
+
+  }
+
   render() {
     return (
       <div className="fb-status-update-entry panel panel-default">
@@ -24,9 +64,11 @@ export default class StatusUpdateEntry extends React.Component {
             </div>
             <div className="media-body">
               <div className="form-group">
-                <textarea className="form-control" rows="2"
-                  placeholder="What's on your mind?">
-                </textarea>
+                <textarea className="form-control"
+                          rows="2"
+                          placeholder="What's on your mind?"
+                          value ={this.state.value}
+                          onChange = {(e) => this.handleChange(e)}/>
               </div>
             </div>
           </div>
@@ -53,7 +95,9 @@ export default class StatusUpdateEntry extends React.Component {
                   <span className="glyphicon glyphicon-user"></span>
                     Friends <span className="caret"></span>
                 </button>
-                <button type="button" className="btn btn-default">
+                <button type="button"
+                        className="btn btn-default"
+                        onClick = {(e) => this.handlePost(e)}>
                   Post
                 </button>
               </div>
