@@ -137,7 +137,7 @@ export default class FeedItem extends React.Component{
         <div className="panel-footer">
           <div className="row">
             <div className="col-md-12">
-              <a href="#">{data.likeCounter.length} people</a> like this
+              <a href="#">{this.state.likeCounter.length} people</a> like this
             </div>
           </div>
           <hr />
@@ -147,7 +147,12 @@ export default class FeedItem extends React.Component{
                 return (
                   <Comment key={i}
                            author={comment.author}
-                           postDate={comment.postDate}>
+                           postDate={comment.postDate}
+                           stateId = {this.state._id}
+                           data ={comment}
+                           index = {i}
+                           likeCounter = {comment.likeCounter}>
+
                       {comment.contents}
                   </Comment>
                 );
