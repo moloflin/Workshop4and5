@@ -1,15 +1,19 @@
 import React from 'react';
-export default class StatusUpdate extends React.Component { render() {
-return ( <div>
-    <div className="row">
-     <div className="col-md-10">
+import {unixTimeToString} from '../util.js';
+
+export default class StatusUpdate extends React.Component{
+  render(){
+    return(
+      <div>
+        <div className="row">
+          <div className="col-md-10">
             <div className="media">
               <div className="media-left media-top">
                 PIC
               </div>
               <div className="media-body">
-<a href="#">{this.props.author}</a>
-<br /> {this.props.postDate} · {this.props.location} · <span
+                <a href="#">{this.props.author.fullName}</a>
+                <br /> {unixTimeToString(this.props.postDate)} · {this.props.location} · <span
                   className="glyphicon glyphicon-user"></span>
               </div>
             </div>
@@ -24,5 +28,6 @@ return ( <div>
           </div>
         </div>
       </div>
-)
-} }
+    )
+  }
+}

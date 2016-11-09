@@ -1,7 +1,8 @@
 import React from 'react';
-export default class StatusUpdateEntry extends React.Component { render() {
-return (
-<div className="fb-status-update-entry panel panel-default">
+export default class StatusUpdateEntry extends React.Component {
+  render() {
+    return (
+      <div className="fb-status-update-entry panel panel-default">
         <div className="panel-body">
           <ul className="nav nav-pills">
             <li role="presentation" className="active">
@@ -24,14 +25,14 @@ return (
             <div className="media-body">
               <div className="form-group">
                 <textarea className="form-control" rows="2"
-                          placeholder="What's on your mind?">
+                  placeholder="What's on your mind?">
                 </textarea>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-             <div className="btn-group" role="group">
+              <div className="btn-group" role="group">
                 <button type="button" className="btn btn-default">
                   <span className="glyphicon glyphicon-camera"></span>
                 </button>
@@ -39,9 +40,9 @@ return (
                   <span className="glyphicon glyphicon-user"></span>
                 </button>
                 <button type="button" className="btn btn-default">
-
-</button>
-<button type="button" className="btn btn-default">
+                  ☺
+                </button>
+                <button type="button" className="btn btn-default">
                   <span className="glyphicon glyphicon-pushpin"></span>
                 </button>
               </div>
@@ -60,5 +61,6 @@ return (
           </div>
         </div>
       </div>
-)
-} }
+    )
+  }
+}
